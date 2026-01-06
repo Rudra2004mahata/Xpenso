@@ -77,22 +77,19 @@ const Navbar = ({ activeMenu }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <motion.div
-              className="flex items-center gap-3"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <img
-                src="/logo.png"
-                alt="SpenDix Logo"
-                className="h-9 w-9 object-contain transition-transform hover:scale-110"
-              />
-              <h2 className="text-xl font-extrabold tracking-wide">
-                <span className="text-green-500">Spen</span>
-                <span className="text-gray-800">Dix</span>
-              </h2>
-            </motion.div>
+           <motion.div
+  className="flex items-center"
+  initial={{ opacity: 0, x: -20 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.5 }}
+>
+  <img
+    src="/logo.png"
+    alt="Xpenso Logo"
+    className="h-16 sm:h-15 object-contain transition-transform hover:scale-105"
+  />
+</motion.div>
+            
 
             {/* Right Actions */}
             <div className="flex items-center gap-4">
@@ -273,8 +270,8 @@ const Navbar = ({ activeMenu }) => {
                           <SupportOption
                             icon={<HiOutlineMail className="h-5 w-5" />}
                             title="Email Support"
-                            subtitle="support@spendix.com"
-                            onClick={() => (window.location.href = "mailto:support@spendix.com")}
+                            subtitle="rudrajyotymahata98@gmail.com"
+                            onClick={() => (window.location.href = "mailto:rudrajyotymahata98@gmail.com")}
                           />
                           <SupportOption
                             icon={<HiOutlineExclamationCircle className="h-5 w-5" />}

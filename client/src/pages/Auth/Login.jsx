@@ -159,7 +159,7 @@ const Login = () => {
             transition={{ delay: 0.3 }}
             className="text-5xl font-bold mb-4 leading-tight"
           >
-            Welcome to <br />Your <span className="text-blue-300">SpenDix</span> Platform
+            Welcome to <br />Your <span className="text-blue-300">Xpenso</span> Platform
           </motion.h1>
           <motion.p
             initial={{ y: -20, opacity: 0 }}

@@ -55,7 +55,7 @@ const SideMenu = ({ activeMenu }) => {
             {user?.fullName || "User"}
           </h5>
           <p className="text-sm text-primary-600 font-medium">
-            Welcome! to <span className="text-blue-700 font-bold">SpenDix</span>
+            Welcome! to <span className="text-blue-700 font-bold">Xpenso</span>
           </p>
 
         </div>
