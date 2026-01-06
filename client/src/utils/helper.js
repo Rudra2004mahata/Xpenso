@@ -63,3 +63,20 @@ export const prepareExpenseLineChartData = (data = []) => {
 
   return chartData;
 };
+
+// ✅ Calculate percentage change for dashboard cards
+export const calculatePercentageChange = (current = 0, previous = 0) => {
+  if (!previous || previous === 0) {
+    return {
+      value: 0,
+      trend: null,
+    };
+  }
+
+  const change = ((current - previous) / previous) * 100;
+
+  return {
+    value: Math.abs(change).toFixed(1),
+    trend: change > 0 ? "up" : change < 0 ? "down" : null,
+  };
+};

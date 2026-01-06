@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "./apiPaths";
 
 const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL, // comes from VITE_API_URL
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
@@ -10,37 +10,46 @@ const axiosInstance = axios.create({
   },
 });
 
-//Request Interceptor
+// =======================
+// Request Interceptor
+// =======================
 axiosInstance.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem("token");
+
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
+
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-//Response Interceptor
+// =======================
+// Response Interceptor
+// =======================
 axiosInstance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response,
   (error) => {
-    //Handle common errors globally
-    if (error.response) {
-      if (error.response.status === 401) {
-        //Ridirect to login page
+    if (error?.response) {
+      const status = error.response.status;
+
+      if (status === 401) {
+        // Unauthorized → redirect to login
+        localStorage.removeItem("token");
         window.location.href = "/login";
-      } else if (error.response.status === 500) {
-        console.error("Server error.Please try again later");
       }
-    } else if (error.code === "ECONNABORTED") {
-      console.error("Request timeout. Please try again");
+
+      if (status === 500) {
+        console.error("Server error. Please try again later.");
+      }
+    } else if (error?.code === "ECONNABORTED") {
+      console.error("Request timeout. Please try again.");
+    } else {
+      console.error("Network error. Please check your connection.");
     }
+
     return Promise.reject(error);
   }
 );
